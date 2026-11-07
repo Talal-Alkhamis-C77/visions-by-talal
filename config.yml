@@ -1,0 +1,75 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/visions-by-talal   # <-- change to your GitHub username/repo
+  branch: main
+media_folder: images
+public_folder: /images
+collections:
+  - name: site
+    label: Website
+    files:
+      - name: content
+        label: All website content
+        file: content/site.json
+        format: json
+        fields:
+          - label: "1. Photos (drag to reorder, + to add, bin to delete)"
+            name: photos
+            widget: list
+            summary: "{{fields.cat}} · {{fields.alt_en}}"
+            fields:
+              - {label: Photo, name: src, widget: image}
+              - {label: Category, name: cat, widget: select, options: [Sports, Events, Other Work]}
+              - {label: Description (English), name: alt_en, widget: string, required: false}
+              - {label: Description (Arabic), name: alt_ar, widget: string, required: false}
+          - {label: "2. Homepage big photo", name: hero, widget: image}
+          - {label: "3. Your portrait for About (optional)", name: about_photo, widget: image, required: false}
+          - {label: "4. WhatsApp number (country code + number, digits only)", name: whatsapp, widget: string}
+          - {label: "5. Instagram link", name: instagram, widget: string}
+          - {label: "6. Instagram name shown on the site", name: instagram_handle, widget: string}
+          - label: "7. English text"
+            name: en
+            widget: object
+            fields: &tx
+              - {label: "Brand name (header & footer)", name: brand, widget: string}
+              - {label: "Menu: Home", name: nav_home, widget: string}
+              - {label: "Menu: Portfolio", name: nav_portfolio, widget: string}
+              - {label: "Menu: About", name: nav_about, widget: string}
+              - {label: "Menu: Contact", name: nav_contact, widget: string}
+              - {label: "Phone menu button", name: menu, widget: string}
+              - {label: "Phone menu close button", name: close, widget: string}
+              - {label: "Small line above the title", name: eyebrow, widget: string}
+              - {label: "Big title (Enter = new line)", name: hero_title, widget: text}
+              - {label: "Introduction under the title", name: intro, widget: text}
+              - {label: "Button: View Portfolio", name: btn_portfolio, widget: string}
+              - {label: "Button: Contact Me", name: btn_contact, widget: string}
+              - {label: "Portfolio: small line", name: portfolio_eyebrow, widget: string}
+              - {label: "Portfolio: title", name: portfolio_title, widget: string}
+              - {label: "Filter: All", name: cat_all, widget: string}
+              - {label: "Filter: Sports", name: cat_sports, widget: string}
+              - {label: "Filter: Events", name: cat_events, widget: string}
+              - {label: "Filter: Other Work", name: cat_other, widget: string}
+              - {label: "About: small line", name: about_eyebrow, widget: string}
+              - {label: "About: title", name: about_title, widget: string}
+              - {label: "About: first paragraph (large)", name: about_lead, widget: text}
+              - {label: "About: second paragraph", name: about_text, widget: text}
+              - {label: "Contact: small line", name: contact_eyebrow, widget: string}
+              - {label: "Contact: title", name: contact_title, widget: string}
+              - {label: "Contact: text", name: contact_text, widget: text}
+              - {label: "Button: Chat on WhatsApp", name: btn_whatsapp, widget: string}
+              - {label: "Button: Email Me", name: btn_email, widget: string}
+              - {label: "Form: name box", name: form_name, widget: string}
+              - {label: "Form: email box", name: form_email, widget: string}
+              - {label: "Form: message box", name: form_message, widget: string}
+              - {label: "Form: send button", name: form_send, widget: string}
+              - {label: "Form: while sending", name: form_sending, widget: string}
+              - {label: "Form: success message", name: form_ok, widget: text}
+              - {label: "Form: error message", name: form_fail, widget: text}
+              - {label: "Ready-made WhatsApp message", name: wa_message, widget: text}
+              - {label: "Footer: location", name: footer_loc, widget: string}
+              - {label: "Google title", name: seo_title, widget: string}
+              - {label: "Google description", name: seo_desc, widget: text}
+          - label: "8. Arabic text (النص العربي)"
+            name: ar
+            widget: object
+            fields: *tx
